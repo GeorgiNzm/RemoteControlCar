@@ -4,9 +4,57 @@
     <meta charset="UTF-8">
     <title>Remote Contoller App</title>
 
-    <script type="text/javascript" src="../js/index.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+        $(function () {
+            $("#button-f").click(function () {
+                moveForwardOrBackward(200);
+            });
+
+            $("#button-b").click(function () {
+                moveForwardOrBackward(-200);
+            });
+
+            $("#button-f, #button-b").mouseup(function () {
+                moveForwardOrBackward(0);
+            });
+
+            $("#button-r").click(function () {
+                steerRightOrLeft(1);
+            });
+
+            $("#button-l").click(function () {
+                steerRightOrLeft(-1);
+            });
+
+            $("#button-r, #button-l").mouseup(function () {
+                steerRightOrLeft(0);
+            });
+        });
+
+        function moveForwardOrBackward(speed) {
+            $.ajax({
+                url: "/api/v1/direction/forwardOrBackward/" + speed,
+                type: "POST"
+            });
+        }
+
+        function steerRightOrLeft(turn) {
+            $.ajax({
+                url: "/api/v1/direction/leftOrRight/" + turn,
+                type: "POST"
+            });
+        }
+
+    </script>
 </head>
 <body>
 
+    <button id="button-f" type="submit">Forward</button>
+    <button id="button-b" type="submit">Backward</button>
+    <button id="button-r" type="submit">Right</button>
+    <button id="button-l" type="submit">Left</button>
 </body>
 </html>
