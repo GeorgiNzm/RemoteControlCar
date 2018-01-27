@@ -2,13 +2,18 @@ package org.elsys.remote_control_car.model;
 
 import com.pi4j.io.gpio.*;
 import org.elsys.remote_control_car.enums.MotorTypeEnum;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Motor {
+
     private MotorTypeEnum type;
+
     private Integer speed;
+
     private GpioPinDigitalOutput inputA, inputB;
+
     private GpioPinPwmOutput enablePin;
 
     public Motor(MotorTypeEnum type, GpioController gpioController) {

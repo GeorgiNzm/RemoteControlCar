@@ -4,6 +4,7 @@ import org.elsys.remote_control_car.service.CarService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,9 +13,13 @@ public class CarController {
 
     private CarService carService = new CarService();
 
+    @RequestMapping(method = RequestMethod.GET, value = "/run")
+    public String index() {
+        return "Opaaaaaaaaaaa";
+    }
+
     @RequestMapping(method = RequestMethod.POST,
-                    value = "/direction/forwardOrBackward/{speed}",
-                    consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+                    value = "/direction/forwardOrBackward/{speed}")
     public ResponseEntity runForwardOrBackward(@PathVariable("speed") String speed) {
 
         Integer motorSpeed = Integer.parseInt(speed);

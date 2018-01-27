@@ -3,6 +3,8 @@ package org.elsys.remote_control_car.repository;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.PinState;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.elsys.remote_control_car.enums.DirectionEnum;
 import org.elsys.remote_control_car.enums.MotorTypeEnum;
 import org.elsys.remote_control_car.model.Motor;
@@ -14,6 +16,7 @@ public class CarRepository implements InitializingBean {
     private static GpioController gpioController = GpioFactory.getInstance();
     private Motor rearMotor, frontMotor;
 
+    private final Logger log = LogManager.getLogger(CarRepository.class);
 
     public CarRepository() {}
 
@@ -74,5 +77,8 @@ public class CarRepository implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         this.rearMotor = new Motor(MotorTypeEnum.REAR, getGpioController());
         this.frontMotor = new Motor(MotorTypeEnum.FRONT, getGpioController());
+
+        log.info(this.rearMotor.toString());
+        log.info(this.frontMotor.toString());
     }
 }

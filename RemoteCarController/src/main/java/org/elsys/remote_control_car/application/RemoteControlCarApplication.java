@@ -6,14 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@EnableAutoConfiguration
-@ComponentScan(basePackages = {
-		"org.elsys.remote_control_car.controller",
-		"org.elsys.remote_control_car.service",
-		"org.elsys.remote_control_car.repository",
-		"org.elsys.remote_control_car.model",
-		"org.elsys.remote_control_car.service"
-		})
+@ComponentScan(basePackages = "org.elsys.remote_control_car.controller")
 public class RemoteControlCarApplication {
 
 	public static void main(String[] args) {
