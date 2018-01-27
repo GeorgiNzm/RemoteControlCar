@@ -13,11 +13,6 @@ public class CarController {
 
     private CarService carService = new CarService();
 
-    @RequestMapping(method = RequestMethod.GET, value = "/run")
-    public String index() {
-        return "Opaaaaaaaaaaa";
-    }
-
     @RequestMapping(method = RequestMethod.POST,
                     value = "/direction/forwardOrBackward/{speed}")
     public ResponseEntity runForwardOrBackward(@PathVariable("speed") String speed) {
