@@ -12,13 +12,19 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CarRepository implements InitializingBean {
+public class CarRepository {
     private static GpioController gpioController = GpioFactory.getInstance();
     private Motor rearMotor, frontMotor;
 
     private final Logger log = LogManager.getLogger(CarRepository.class);
 
-    public CarRepository() {}
+    public CarRepository() {
+        this.rearMotor = new Motor(MotorTypeEnum.REAR, getGpioController());
+        this.frontMotor = new Motor(MotorTypeEnum.FRONT, getGpioController());
+
+        log.info(this.rearMotor.toString());
+        log.info(this.frontMotor.toString());
+    }
 
     public GpioController getGpioController() {
         return gpioController;
@@ -71,14 +77,5 @@ public class CarRepository implements InitializingBean {
             this.frontMotor.getInputB().setState(PinState.LOW);
             this.frontMotor.setSpeed(0);
         }
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        this.rearMotor = new Motor(MotorTypeEnum.REAR, getGpioController());
-        this.frontMotor = new Motor(MotorTypeEnum.FRONT, getGpioController());
-
-        log.info(this.rearMotor.toString());
-        log.info(this.frontMotor.toString());
     }
 }

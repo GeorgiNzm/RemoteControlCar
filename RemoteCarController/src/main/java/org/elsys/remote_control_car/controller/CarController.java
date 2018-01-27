@@ -1,6 +1,7 @@
 package org.elsys.remote_control_car.controller;
 
 import org.elsys.remote_control_car.service.CarService;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -9,9 +10,9 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1")
-public class CarController {
+public class CarController implements InitializingBean {
 
-    private CarService carService = new CarService();
+    private CarService carService;
 
     @RequestMapping(method = RequestMethod.POST,
                     value = "/direction/forwardOrBackward/{speed}")
@@ -47,5 +48,10 @@ public class CarController {
             produces = MediaType.TEXT_PLAIN_VALUE)
     public Integer getSteeringCondition() {
         return carService.getSteeringCondition();
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        this.carService = new CarService();
     }
 }
