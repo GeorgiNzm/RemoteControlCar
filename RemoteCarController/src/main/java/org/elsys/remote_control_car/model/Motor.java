@@ -2,7 +2,6 @@ package org.elsys.remote_control_car.model;
 
 import com.pi4j.io.gpio.*;
 import org.elsys.remote_control_car.enums.MotorTypeEnum;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -18,15 +17,20 @@ public class Motor {
 
     public Motor(MotorTypeEnum type, GpioController gpioController) {
         this.type = type;
-        if (this.type.toString().equals("REAR")) {
-            this.inputA = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_04, "1A", PinState.LOW);
-            this.inputB = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_05, "1B", PinState.LOW);
-            this.enablePin = gpioController.provisionPwmOutputPin(RaspiPin.GPIO_23, "E1", 0);
-        } else if(this.type.toString().equals("FRONT")) {
-            this.inputA = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_06, "2A", PinState.LOW);
-            this.inputB = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_27, "2B", PinState.LOW);
-            this.enablePin = gpioController.provisionPwmOutputPin(RaspiPin.GPIO_26, "E2", 0);
+
+        switch (this.type.toString()) {
+            case "REAR":
+                this.inputA = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_04, "1A", PinState.LOW);
+                this.inputB = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_05, "1B", PinState.LOW);
+                this.enablePin = gpioController.provisionPwmOutputPin(RaspiPin.GPIO_23, "E1", 0);
+                break;
+            case "FRONT":
+                this.inputA = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_06, "2A", PinState.LOW);
+                this.inputB = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_27, "2B", PinState.LOW);
+                this.enablePin = gpioController.provisionPwmOutputPin(RaspiPin.GPIO_26, "E2", 0);
+                break;
         }
+
         this.speed = 0;
     }
 
