@@ -40,42 +40,41 @@ public class CarRepository {
 
     public void runRearMotor(Integer speed, DirectionEnum direction) {
 
+        switch (direction) {
+            case FORWARD:
+                this.rearMotor.getInputA().setState(PinState.LOW);
+                this.rearMotor.getInputB().setState(PinState.HIGH);
+                break;
+            case BACKWARD:
+                this.rearMotor.getInputA().setState(PinState.HIGH);
+                this.rearMotor.getInputB().setState(PinState.LOW);
+                break;
+            case NONE:
+                this.rearMotor.getInputA().setState(PinState.LOW);
+                this.rearMotor.getInputB().setState(PinState.LOW);
+                break;
+        }
+
         this.rearMotor.setSpeed(speed);
-
-        if(direction.toString().equals("FORWARD")) {
-            this.rearMotor.getInputA().setState(PinState.LOW);
-            this.rearMotor.getInputB().setState(PinState.HIGH);
-        }
-
-        if(direction.toString().equals("BACKWARD")) {
-            this.rearMotor.getInputA().setState(PinState.HIGH);
-            this.rearMotor.getInputB().setState(PinState.LOW);
-        }
-
-        if (direction.toString().equals("NONE")) {
-            this.rearMotor.getInputA().setState(PinState.LOW);
-            this.rearMotor.getInputB().setState(PinState.LOW);
-        }
     }
 
     public void steerFrontMotor(DirectionEnum direction) {
 
+        switch (direction) {
+            case RIGHT:
+                this.frontMotor.getInputA().setState(PinState.HIGH);
+                this.frontMotor.getInputB().setState(PinState.LOW);
+                break;
+            case LEFT:
+                this.frontMotor.getInputA().setState(PinState.LOW);
+                this.frontMotor.getInputB().setState(PinState.HIGH);
+                break;
+            case NONE:
+                this.frontMotor.getInputA().setState(PinState.LOW);
+                this.frontMotor.getInputB().setState(PinState.LOW);
+                break;
+        }
+
         this.frontMotor.setSpeed(500);
-
-        if (direction.toString().equals("RIGHT")) {
-            this.frontMotor.getInputA().setState(PinState.HIGH);
-            this.frontMotor.getInputB().setState(PinState.LOW);
-        }
-
-        if (direction.toString().equals("LEFT")) {
-            this.frontMotor.getInputA().setState(PinState.LOW);
-            this.frontMotor.getInputB().setState(PinState.HIGH);
-        }
-
-        if (direction.toString().equals("NONE")) {
-            this.frontMotor.getInputA().setState(PinState.LOW);
-            this.frontMotor.getInputB().setState(PinState.LOW);
-            this.frontMotor.setSpeed(0);
-        }
     }
 }
