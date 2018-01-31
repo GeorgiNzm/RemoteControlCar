@@ -18,13 +18,13 @@ public class Motor {
     public Motor(MotorTypeEnum type, GpioController gpioController) {
         this.type = type;
 
-        switch (this.type.toString()) {
-            case "REAR":
+        switch (this.type) {
+            case REAR:
                 this.inputA = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_04, "1A", PinState.LOW);
                 this.inputB = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_05, "1B", PinState.LOW);
                 this.enablePin = gpioController.provisionPwmOutputPin(RaspiPin.GPIO_23, "E1", 0);
                 break;
-            case "FRONT":
+            case FRONT:
                 this.inputA = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_06, "2A", PinState.LOW);
                 this.inputB = gpioController.provisionDigitalOutputPin(RaspiPin.GPIO_27, "2B", PinState.LOW);
                 this.enablePin = gpioController.provisionPwmOutputPin(RaspiPin.GPIO_26, "E2", 0);
