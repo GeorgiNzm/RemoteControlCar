@@ -16,11 +16,9 @@ public class CarController implements InitializingBean {
 
     @RequestMapping(method = RequestMethod.POST,
                     value = "/direction/forwardOrBackward/{speed}")
-    public ResponseEntity runForwardOrBackward(@PathVariable("speed") String speed) {
+    public ResponseEntity runForwardOrBackward(@PathVariable("speed") int speed) {
 
-        Integer motorSpeed = Integer.parseInt(speed);
-
-        carService.runMotorForwardOrBackward(motorSpeed);
+        carService.runMotorForwardOrBackward(speed);
 
         return new ResponseEntity(HttpStatus.OK);
     }
@@ -34,11 +32,9 @@ public class CarController implements InitializingBean {
 
     @RequestMapping(method = RequestMethod.POST,
                     value = "/direction/leftOrRight/{turn}")
-    public ResponseEntity steerLeftOrRight(@PathVariable("turn") String turn) {
+    public ResponseEntity steerLeftOrRight(@PathVariable("turn") int turn) {
 
-        Integer turnNumber = Integer.parseInt(turn);
-
-        carService.steerMotorLeftOrRight(turnNumber);
+        carService.steerMotorLeftOrRight(turn);
 
         return new ResponseEntity(HttpStatus.OK);
     }
