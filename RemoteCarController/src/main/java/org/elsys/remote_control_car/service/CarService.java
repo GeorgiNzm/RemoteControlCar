@@ -15,12 +15,14 @@ public class CarService {
         if (speed != 0) {
             if (speed > 0) {
                 carRepository.runRearMotor(speed, DirectionEnum.FORWARD);
-            } else {
-                carRepository.runRearMotor(speed, DirectionEnum.BACKWARD);
+                return;
             }
-        } else {
-            carRepository.runRearMotor(speed, DirectionEnum.NONE);
+
+            carRepository.runRearMotor(speed, DirectionEnum.BACKWARD);
+            return;
         }
+
+        carRepository.runRearMotor(speed, DirectionEnum.NONE);
     }
 
     public Integer getRearMotorSpeed() {
@@ -31,12 +33,14 @@ public class CarService {
         if (turn != 0) {
             if (turn == 1) {
                 carRepository.steerFrontMotor(DirectionEnum.RIGHT);
-            } else if (turn == -1) {
-                carRepository.steerFrontMotor(DirectionEnum.LEFT);
+                return;
             }
-        } else {
-            carRepository.steerFrontMotor(DirectionEnum.NONE);
+
+            carRepository.steerFrontMotor(DirectionEnum.LEFT);
+            return;
         }
+        
+        carRepository.steerFrontMotor(DirectionEnum.NONE);
     }
 
     public Integer getSteeringCondition() {
