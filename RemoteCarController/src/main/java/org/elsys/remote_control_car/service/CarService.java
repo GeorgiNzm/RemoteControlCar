@@ -2,53 +2,53 @@ package org.elsys.remote_control_car.service;
 
 import com.pi4j.io.gpio.PinState;
 import org.elsys.remote_control_car.enums.DirectionEnum;
-import org.elsys.remote_control_car.repository.CarRepository;
+import org.elsys.remote_control_car.repository.MotorRepository;
 import org.springframework.stereotype.Component;
 
 @Component
 public class CarService {
-    private CarRepository carRepository = new CarRepository();
+    private MotorRepository motorRepository = new MotorRepository();
 
     public CarService() {}
 
     public void runMotorForwardOrBackward(Integer speed) {
         if (speed != 0) {
             if (speed > 0) {
-                carRepository.runRearMotor(speed, DirectionEnum.FORWARD);
+                motorRepository.runRearMotor(speed, DirectionEnum.FORWARD);
                 return;
             }
 
-            carRepository.runRearMotor(speed, DirectionEnum.BACKWARD);
+            motorRepository.runRearMotor(speed, DirectionEnum.BACKWARD);
             return;
         }
 
-        carRepository.runRearMotor(speed, DirectionEnum.NONE);
+        motorRepository.runRearMotor(speed, DirectionEnum.NONE);
     }
 
     public Integer getRearMotorSpeed() {
-        return carRepository.getRearMotor().getSpeed();
+        return motorRepository.getRearMotor().getSpeed();
     }
 
     public void steerMotorLeftOrRight(Integer turn) {
         if (turn != 0) {
             if (turn == 1) {
-                carRepository.steerFrontMotor(DirectionEnum.RIGHT);
+                motorRepository.steerFrontMotor(DirectionEnum.RIGHT);
                 return;
             }
 
-            carRepository.steerFrontMotor(DirectionEnum.LEFT);
+            motorRepository.steerFrontMotor(DirectionEnum.LEFT);
             return;
         }
-        
-        carRepository.steerFrontMotor(DirectionEnum.NONE);
+
+        motorRepository.steerFrontMotor(DirectionEnum.NONE);
     }
 
     public Integer getSteeringCondition() {
-        PinState stateA = carRepository.getFrontMotor()
+        PinState stateA = motorRepository.getFrontMotor()
                                     .getInputA()
                                     .getState();
 
-        PinState stateB = carRepository.getFrontMotor()
+        PinState stateB = motorRepository.getFrontMotor()
                                     .getInputB()
                                     .getState();
 
