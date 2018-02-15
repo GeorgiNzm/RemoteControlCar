@@ -28,7 +28,7 @@
             android:layout_width="80dp"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@drawable/circle_button"
+            android:background="@drawable/button_ripple_effect"
             android:contentDescription="@string/forward_button"
             android:src="@drawable/ic_action_forward" />
 
@@ -37,7 +37,7 @@
             android:layout_width="80dp"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@drawable/circle_button"
+            android:background="@drawable/button_ripple_effect"
             android:contentDescription="@string/backward_button"
             android:src="@drawable/ic_action_backward" />
     </LinearLayout>
@@ -59,7 +59,7 @@
             android:id="@+id/left_btn"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/circle_button"
+            android:background="@drawable/button_ripple_effect"
             android:contentDescription="@string/left_button"
             android:src="@drawable/ic_action_left" />
 
@@ -67,7 +67,7 @@
             android:id="@+id/right_btn"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/circle_button"
+            android:background="@drawable/button_ripple_effect"
             android:contentDescription="@string/right_button"
             android:src="@drawable/ic_action_right" />
 
