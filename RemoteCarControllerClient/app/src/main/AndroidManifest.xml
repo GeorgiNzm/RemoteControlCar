@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="elsys.org.remote_control_car">
+    package="org.elsys.remote_control_car">
 
     <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="elsys.org.remote_control_car.MainActivity">
+        <activity android:name="org.elsys.remote_control_car.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
