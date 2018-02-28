@@ -1,6 +1,7 @@
 package org.elsys.remote_control_car.controller;
 
 import org.elsys.remote_control_car.service.CarService;
+import org.elsys.remote_control_car.service.StreamService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -8,11 +9,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/api/v1")
 public class CarController implements InitializingBean {
 
     private CarService carService;
+
+    private StreamService streamService;
 
     @RequestMapping(method = RequestMethod.POST,
                     value = "/direction/forwardOrBackward/{speed}")
@@ -46,8 +51,19 @@ public class CarController implements InitializingBean {
         return carService.getSteeringCondition();
     }
 
+    @RequestMapping(method = RequestMethod.GET,
+                    value = "/camera/stream")
+    public void openVideoStream() {
+        try {
+            streamService.createVideoStream();
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public void afterPropertiesSet() throws Exception {
         this.carService = new CarService();
+        this.streamService = new StreamService();
     }
 }
