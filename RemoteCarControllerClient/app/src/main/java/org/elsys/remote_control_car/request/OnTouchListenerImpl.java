@@ -7,7 +7,6 @@ import android.view.View;
 import com.android.volley.Request;
 
 import org.elsys.remote_control_car.R;
-import org.elsys.remote_control_car.abstraction.AbstractRequest;
 import org.elsys.remote_control_car.enums.RequestType;
 
 /**
@@ -17,23 +16,23 @@ import org.elsys.remote_control_car.enums.RequestType;
 public final class OnTouchListenerImpl implements View.OnTouchListener {
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
-        AbstractRequest abstractRequest = null;
+        org.elsys.remote_control_car.request.Request request = null;
 
         if (motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
             view.performClick();
-            abstractRequest = processRequestWhenClicked(view.getId());
+            request = processRequestWhenClicked(view.getId());
         }
 
         if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
-            abstractRequest = processRequestWhenReleased(view.getId());
+            request = processRequestWhenReleased(view.getId());
         }
 
-        if (abstractRequest != null) sendRequest(abstractRequest, view.getContext());
+        if (request != null) sendRequest(request, view.getContext());
 
-        return abstractRequest != null;
+        return request != null;
     }
 
-    private AbstractRequest processRequestWhenClicked(int id) {
+    private org.elsys.remote_control_car.request.Request processRequestWhenClicked(int id) {
 
         switch (id) {
             case R.id.forward_btn:
@@ -49,7 +48,7 @@ public final class OnTouchListenerImpl implements View.OnTouchListener {
         }
     }
 
-    private AbstractRequest processRequestWhenReleased(int id) {
+    private org.elsys.remote_control_car.request.Request processRequestWhenReleased(int id) {
         switch (id) {
             case R.id.forward_btn:
             case R.id.backward_btn:
@@ -64,8 +63,8 @@ public final class OnTouchListenerImpl implements View.OnTouchListener {
         }
     }
 
-    private void sendRequest(AbstractRequest abstractRequest, Context context) {
-        Request<String> stringRequest = abstractRequest.buildRequest();
+    private void sendRequest(org.elsys.remote_control_car.request.Request request, Context context) {
+        Request<String> stringRequest = request.getStringRequest();
 
         RequestQueueSingleton.getInstance(context)
                              .addToRequestQueue(stringRequest);
