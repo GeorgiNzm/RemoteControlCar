@@ -23,12 +23,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         initializeButtons();
-
-        try {
-            setListeners();
-        } catch (NullPointerException nex) {
-            Log.d("NULL-P", nex.getMessage());
-        }
     }
 
     private void enableFullScreenLandscape() {
@@ -45,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         buttons.put("Backward", (ImageButton) findViewById(R.id.backward_btn));
         buttons.put("Right", (ImageButton) findViewById(R.id.right_btn));
         buttons.put("Left", (ImageButton) findViewById(R.id.left_btn));
+
+        setListeners();
     }
 
     private void setListeners() {
@@ -53,10 +49,6 @@ public class MainActivity extends AppCompatActivity {
         while (iterator.hasNext()) {
             String key = iterator.next();
             ImageButton button = buttons.get(key);
-
-            if ((key == null) || (button == null)) {
-                throw new NullPointerException("Setting button listener error");
-            }
 
             button.setOnTouchListener(new OnTouchListenerImpl());
         }
