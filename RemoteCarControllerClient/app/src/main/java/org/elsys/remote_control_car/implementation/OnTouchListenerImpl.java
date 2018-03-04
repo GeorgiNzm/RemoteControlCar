@@ -15,7 +15,7 @@ import org.elsys.remote_control_car.enums.RequestType;
  * Created by georgi on 28.02.18.
  */
 
-public final class OnTouchListenerImpl extends Fragment implements View.OnTouchListener {
+public final class OnTouchListenerImpl implements View.OnTouchListener {
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         AbstractRequest abstractRequest = null;
@@ -38,13 +38,13 @@ public final class OnTouchListenerImpl extends Fragment implements View.OnTouchL
 
         switch (id) {
             case R.id.forward_btn:
-                return RequestFactory.getInstance(RequestType.MOVE_FORWARD);
+                return RequestFactory.createRequest(RequestType.MOVE_FORWARD);
             case R.id.backward_btn:
-                return RequestFactory.getInstance(RequestType.MOVE_BACKWARD);
+                return RequestFactory.createRequest(RequestType.MOVE_BACKWARD);
             case R.id.right_btn:
-                return RequestFactory.getInstance(RequestType.STEER_RIGHT);
+                return RequestFactory.createRequest(RequestType.STEER_RIGHT);
             case R.id.left_btn:
-                return RequestFactory.getInstance(RequestType.STEER_LEFT);
+                return RequestFactory.createRequest(RequestType.STEER_LEFT);
             default:
                 return null;
         }
@@ -54,11 +54,11 @@ public final class OnTouchListenerImpl extends Fragment implements View.OnTouchL
         switch (id) {
             case R.id.forward_btn:
             case R.id.backward_btn:
-                return RequestFactory.getInstance(RequestType.STOP_MOVEMENT);
+                return RequestFactory.createRequest(RequestType.STOP_MOVEMENT);
 
             case R.id.right_btn:
             case R.id.left_btn:
-                return RequestFactory.getInstance(RequestType.STOP_STEERING);
+                return RequestFactory.createRequest(RequestType.STOP_STEERING);
 
             default:
                 return null;
@@ -71,6 +71,5 @@ public final class OnTouchListenerImpl extends Fragment implements View.OnTouchL
         RequestQueueSingleton.getInstance(context)
                              .addToRequestQueue(stringRequest);
     }
-
 
 }

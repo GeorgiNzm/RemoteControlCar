@@ -4,7 +4,7 @@ package org.elsys.remote_control_car.implementation;
  * Created by georgi on 19.02.18.
  */
 
-public class RequestUrls {
+public final class RequestUrls {
     private static final String RPI_URL = "http://169.254.148.138:8080";
 
     public static final String FORWARD_MOVEMENT_URL = RPI_URL + "/direction/forwardOrBackward/200";
