@@ -12,7 +12,7 @@ import org.elsys.remote_control_car.enums.RequestType;
 public class RequestFactory {
     public RequestFactory() {}
 
-    public static AbstractRequest getInstance(RequestType type) {
+    public static AbstractRequest createRequest(RequestType type) {
         AbstractRequest request = null;
         
         switch (type) {

@@ -1,4 +1,4 @@
-package org.elsys.remote_control_car.implementation;
+package org.elsys.remote_control_car.request;
 
 /**
  * Created by georgi on 19.02.18.
