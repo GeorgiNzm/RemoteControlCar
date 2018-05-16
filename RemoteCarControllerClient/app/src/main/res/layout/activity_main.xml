@@ -43,6 +43,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:divider="@drawable/horizontal_linear_divider"
@@ -73,12 +74,29 @@
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="289dp"
-        tools:layout_editor_absoluteY="74dp" />
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:stream="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/vLayout"
+        android:layout_width="490dp"
+        android:layout_height="187dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toStartOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:context="com.github.niqdev.ipcam.IpCamDefaultActivity">
+
+        <com.github.niqdev.mjpeg.MjpegSurfaceView
+            android:id="@+id/mjpegViewDefault"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            stream:type="stream_default" />
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

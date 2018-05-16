@@ -29,6 +29,8 @@ public class RequestFactory {
                 request = new Request(com.android.volley.Request.Method.GET, RequestUrls.GET_SPEED_VALUE_URL);
             case GET_STEERING_CONDITION:
                 request = new Request(com.android.volley.Request.Method.GET, RequestUrls.GET_STEERING_CONDITION_URL);
+            case CAMERA_START:
+                request = new Request(com.android.volley.Request.Method.GET, RequestUrls.CAMERA_START_URL);
         }
         return request;
     }
