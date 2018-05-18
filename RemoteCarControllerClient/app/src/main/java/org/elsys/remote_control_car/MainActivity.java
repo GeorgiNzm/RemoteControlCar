@@ -1,18 +1,12 @@
 package org.elsys.remote_control_car;
 
 import android.content.pm.ActivityInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.util.Log;
 import android.view.WindowManager;
-import android.webkit.WebView;
 import android.widget.ImageButton;
-import android.widget.MediaController;
-import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
 import com.github.niqdev.mjpeg.DisplayMode;
 import com.github.niqdev.mjpeg.Mjpeg;
@@ -25,11 +19,6 @@ import org.elsys.remote_control_car.request.RequestUrls;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-
-import static junit.runner.BaseTestRunner.getPreference;
 
 public class MainActivity extends AppCompatActivity {
 
