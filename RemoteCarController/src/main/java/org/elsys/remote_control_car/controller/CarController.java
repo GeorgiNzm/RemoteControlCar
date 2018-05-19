@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1")
 public class CarController implements InitializingBean {
 
+    private static final String RPI_STATIC_IP = "192.168.43.173";
+
     private CarService carService;
 
     private ProcessService processService;
@@ -81,13 +83,11 @@ public class CarController implements InitializingBean {
         headers.put("Expires", Arrays.asList("0"));
         headers.put("Max-Age", Arrays.asList("0"));
         headers.put("Pragma", Arrays.asList("no-cache"));
-        // headers.put("Server", Arrays.asList("Motion/4.1.1"));
+        headers.put("Server", Arrays.asList("Motion/4.1.1"));
 
-        String body = new String(
-                "<body><img style=\"-webkit-user-select: none;\" src=\"http://169.254.148.138:58081/\" width=\"612\" height=\"459\"></body>");
-        HttpEntity<String> responseHttpEntity = new HttpEntity<>(body, headers);
+        String body = "<body><img style=\"-webkit-user-select: none;\" src=\"http://" + RPI_STATIC_IP + ":58081/\" width=\"640\" height=\"480\"></body>";
 
-        return responseHttpEntity;
+        return new HttpEntity<>(body, headers);
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/camera/stop")

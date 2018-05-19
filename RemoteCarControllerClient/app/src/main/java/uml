@@ -1,0 +1,11 @@
+@startuml
+    class MainActivity
+    class AppCompatActivity
+    class Request
+    class RequestFactory
+    class RequestQueueSingleton
+    class RequestUrls
+    class OnTouchListenerImpl
+
+
+@enduml
