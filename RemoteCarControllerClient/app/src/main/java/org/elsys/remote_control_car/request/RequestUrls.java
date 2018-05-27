@@ -18,7 +18,7 @@ public final class RequestUrls {
 
     public static final String STEERING_RIGHT_URL = RPI_ROOT_RESOURCE_URL + "/direction/leftOrRight/1";
 
-    public static final String STEERING_LEFT_URL = RPI_ROOT_RESOURCE_URL + "/direction/leftOrRight/1";
+    public static final String STEERING_LEFT_URL = RPI_ROOT_RESOURCE_URL + "/direction/leftOrRight/-1";
 
     public static final String STOP_STEERING_URL = RPI_ROOT_RESOURCE_URL + "/direction/leftOrRight/0";
 
@@ -27,4 +27,6 @@ public final class RequestUrls {
     public static final String GET_STEERING_CONDITION_URL = RPI_ROOT_RESOURCE_URL + "/direction/leftOrRight/";
 
     public static final String CAMERA_START_URL = RPI_ROOT_RESOURCE_URL + "/camera/start";
+
+    public static final String CAMERA_STOP_URL = RPI_ROOT_RESOURCE_URL + "/camera/stop";
 }

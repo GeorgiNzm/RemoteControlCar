@@ -54,7 +54,7 @@ public class MotorRepository {
                 break;
         }
 
-        this.rearMotor.setSpeed(speed);
+        this.rearMotor.setSpeed(Math.abs(speed));
     }
 
     public void steerFrontMotor(DirectionEnum direction) {
@@ -74,6 +74,6 @@ public class MotorRepository {
                 break;
         }
 
-        this.frontMotor.setSpeed(500);
+        this.frontMotor.setSpeed(300);
     }
 }
