@@ -10,15 +10,15 @@ public final class RequestUrls {
 
     public static final String RPI_ROOT_RESOURCE_URL = "http://" + RPI_STATIC_IP + ":8080/api/v1";
 
-    public static final String FORWARD_MOVEMENT_URL = RPI_ROOT_RESOURCE_URL + "/direction/forwardOrBackward/200";
+    public static final String FORWARD_MOVEMENT_URL = RPI_ROOT_RESOURCE_URL + "/direction/forwardOrBackward/350";
     
-    public static final String BACKWARD_MOVEMENT_URL = RPI_ROOT_RESOURCE_URL + "/direction/forwardOrBackward/-200";
+    public static final String BACKWARD_MOVEMENT_URL = RPI_ROOT_RESOURCE_URL + "/direction/forwardOrBackward/-300";
 
     public static final String STOP_MOVEMENT_URL = RPI_ROOT_RESOURCE_URL + "/direction/forwardOrBackward/0";
 
     public static final String STEERING_RIGHT_URL = RPI_ROOT_RESOURCE_URL + "/direction/leftOrRight/1";
 
-    public static final String STEERING_LEFT_URL = RPI_ROOT_RESOURCE_URL + "/direction/leftOrRight/1";
+    public static final String STEERING_LEFT_URL = RPI_ROOT_RESOURCE_URL + "/direction/leftOrRight/-1";
 
     public static final String STOP_STEERING_URL = RPI_ROOT_RESOURCE_URL + "/direction/leftOrRight/0";
 
@@ -27,4 +27,6 @@ public final class RequestUrls {
     public static final String GET_STEERING_CONDITION_URL = RPI_ROOT_RESOURCE_URL + "/direction/leftOrRight/";
 
     public static final String CAMERA_START_URL = RPI_ROOT_RESOURCE_URL + "/camera/start";
+
+    public static final String CAMERA_STOP_URL = RPI_ROOT_RESOURCE_URL + "/camera/stop";
 }

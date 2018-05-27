@@ -13,5 +13,6 @@ public enum RequestType {
     STOP_STEERING,
     GET_SPEED_VALUE,
     GET_STEERING_CONDITION,
-    CAMERA_START
+    CAMERA_START,
+    CAMERA_STOP
 }

@@ -25,12 +25,8 @@ public class CarController implements InitializingBean {
     private CarService carService;
 
     private ProcessService processService;
+    
     private int motionPid = 0;
-
-    @RequestMapping(method = RequestMethod.GET, value = "/")
-    public String hello() {
-        return "Hello, Spring application";
-    }
 
     @RequestMapping(method = RequestMethod.POST, value = "/direction/forwardOrBackward/{speed}")
     public ResponseEntity runForwardOrBackward(@PathVariable("speed") int speed) {

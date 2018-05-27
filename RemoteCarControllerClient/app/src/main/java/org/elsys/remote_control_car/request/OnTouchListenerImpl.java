@@ -27,7 +27,7 @@ public final class OnTouchListenerImpl implements View.OnTouchListener {
             request = processRequestWhenReleased(view.getId());
         }
 
-        if (request != null) sendRequest(request, view.getContext());
+        if (request != null) Util.sendRequest(request);
 
         return request != null;
     }
@@ -62,12 +62,4 @@ public final class OnTouchListenerImpl implements View.OnTouchListener {
                 return null;
         }
     }
-
-    private void sendRequest(org.elsys.remote_control_car.request.Request request, Context context) {
-        Request<String> stringRequest = request.getStringRequest();
-
-        RequestQueueSingleton.getInstance(context)
-                             .addToRequestQueue(stringRequest);
-    }
-
 }
