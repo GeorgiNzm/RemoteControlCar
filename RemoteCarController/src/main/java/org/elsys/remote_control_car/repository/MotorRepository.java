@@ -59,21 +59,26 @@ public class MotorRepository {
 
     public void steerFrontMotor(DirectionEnum direction) {
 
+        Integer pwm = 0;
+
         switch (direction) {
             case RIGHT:
                 this.frontMotor.getInputA().setState(PinState.HIGH);
                 this.frontMotor.getInputB().setState(PinState.LOW);
+                pwm = 400;
                 break;
             case LEFT:
                 this.frontMotor.getInputA().setState(PinState.LOW);
                 this.frontMotor.getInputB().setState(PinState.HIGH);
+                pwm = 300;
                 break;
             case NONE:
                 this.frontMotor.getInputA().setState(PinState.LOW);
                 this.frontMotor.getInputB().setState(PinState.LOW);
+                pwm = 0;
                 break;
         }
 
-        this.frontMotor.setSpeed(300);
+        this.frontMotor.setSpeed(pwm);
     }
 }

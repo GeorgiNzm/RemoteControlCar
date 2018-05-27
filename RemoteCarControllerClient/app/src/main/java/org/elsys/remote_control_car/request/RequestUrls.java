@@ -10,9 +10,9 @@ public final class RequestUrls {
 
     public static final String RPI_ROOT_RESOURCE_URL = "http://" + RPI_STATIC_IP + ":8080/api/v1";
 
-    public static final String FORWARD_MOVEMENT_URL = RPI_ROOT_RESOURCE_URL + "/direction/forwardOrBackward/200";
+    public static final String FORWARD_MOVEMENT_URL = RPI_ROOT_RESOURCE_URL + "/direction/forwardOrBackward/350";
     
-    public static final String BACKWARD_MOVEMENT_URL = RPI_ROOT_RESOURCE_URL + "/direction/forwardOrBackward/-200";
+    public static final String BACKWARD_MOVEMENT_URL = RPI_ROOT_RESOURCE_URL + "/direction/forwardOrBackward/-300";
 
     public static final String STOP_MOVEMENT_URL = RPI_ROOT_RESOURCE_URL + "/direction/forwardOrBackward/0";
 
